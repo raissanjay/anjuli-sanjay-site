@@ -179,9 +179,9 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
 <section class="story" id="story">
   <div>
     <div class="eyebrow">Our Story</div>
-    <h2 class="h2">Fourteen years in the making</h2>
+    <h2 class="h2">The road to yes</h2>
     <div class="rulel"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
-    <p>It started at UCLA and never really stopped — through Peru, through Paris, through a thousand ordinary days that somehow added up to this. On a quiet evening in Napa, the answer was always going to be yes.</p>
+    <p>From UCLA to Peru to Paris to a quiet evening in Napa, our story kept leading right where it was meant to. In Napa, the answer was an easy yes.</p>
     <p style="margin-top:14px">Now we'd love nothing more than to gather the people we love and raise a glass to the next chapter. Come celebrate with us.</p>
   </div>
   <div class="pic"><img src="https://images.zola.com/566c03b9-84dc-4dc4-890e-a11afeab319f?w=1100" alt="Anjuli and Sanjay at UCLA"></div>
@@ -197,7 +197,7 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
     <div class="cards">
       <div class="card"><div class="ic">✦</div><h3>When</h3><p>Saturday, December 19, 2026<br>5:00 PM – 9:00 PM<br><em>Mehendi &amp; appetizers from 4:30 PM</em></p></div>
       <div class="card"><div class="ic">✦</div><h3>Where</h3><p>The Ranch at Silver Creek<br>by Wedgewood Weddings<br>4601 Hill Top View Ln<br>San Jose, CA 95138</p></div>
-      <div class="card"><div class="ic">✦</div><h3>Attire</h3><p>Semi-formal evening wear<br>Indian attire encouraged</p></div>
+      <div class="card"><div class="ic">✦</div><h3>Attire</h3><p>Semi-formal evening wear</p></div>
     </div>
     <p style="max-width:660px;margin:36px auto 0;color:#e4edf8;font-size:15.5px;line-height:1.8">Come celebrate our engagement with us — a fun-filled evening of delicious food, activities, and quality time together. Thank you for being a part of our lives!</p>
     <a class="btn ghost" href="https://maps.google.com/?q=The+Ranch+at+Silver+Creek+San+Jose" target="_blank" style="margin-top:36px">Map &amp; Directions</a>
@@ -256,14 +256,14 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
       <div class="rrow">
         <label class="rlab">Will you attend?</label>
         <div class="attend">
-          <label><input type="radio" name="attending" value="Joyfully accepts" required>Joyfully accepts</label>
-          <label><input type="radio" name="attending" value="Regretfully declines">Regretfully declines</label>
+          <label><input type="radio" name="attending" value="Yes" required>Yes</label>
+          <label><input type="radio" name="attending" value="No">No</label>
         </div>
       </div>
 
       <div id="acceptFields" style="display:none">
         <div class="rrow">
-          <label class="rlab" for="f_party">Number in your party</label>
+          <label class="rlab" for="f_party">How many will attend, including you?</label>
           <input class="rin" id="f_party" type="number" name="party_size" min="1" max="12" placeholder="e.g. 2">
         </div>
         <div class="rrow">
@@ -278,14 +278,16 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
 
       <div class="rtwo">
         <div class="rrow">
-          <label class="rlab" for="f_email">Email <span class="opt">(optional)</span></label>
-          <input class="rin" id="f_email" type="email" name="email" placeholder="you@email.com">
+          <label class="rlab" for="f_email">Email</label>
+          <input class="rin" id="f_email" type="email" name="email" required placeholder="you@email.com">
         </div>
         <div class="rrow">
-          <label class="rlab" for="f_phone">Phone <span class="opt">(optional)</span></label>
-          <input class="rin" id="f_phone" type="tel" name="phone" placeholder="So we can reach you">
+          <label class="rlab" for="f_phone">Phone</label>
+          <input class="rin" id="f_phone" type="tel" name="phone" required placeholder="Best number to reach you">
         </div>
       </div>
+
+      <p style="font-size:12px;color:#8a7a55;margin:-2px 0 18px">We'll only use your phone and email to share event details and updates.</p>
 
       <div class="rrow">
         <label class="rlab" for="f_note">A note or question <span class="opt">(optional)</span></label>
@@ -329,7 +331,7 @@ tick();setInterval(tick,1000);
   var form=document.getElementById('rsvpForm');
   if(!form) return;
   var acc=document.getElementById('acceptFields');
-  function tog(){var v=form.querySelector('input[name=attending]:checked');acc.style.display=(v&&v.value.indexOf('accept')>-1)?'block':'none';}
+  function tog(){var v=form.querySelector('input[name=attending]:checked');var show=(v&&v.value==='Yes');acc.style.display=show?'block':'none';var p=document.getElementById('f_party');if(p){if(show)p.setAttribute('required','required');else p.removeAttribute('required');}}
   Array.prototype.forEach.call(form.querySelectorAll('input[name=attending]'),function(r){r.addEventListener('change',tog);});
   form.addEventListener('submit',function(e){
     e.preventDefault();
