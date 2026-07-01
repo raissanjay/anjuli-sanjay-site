@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Anjuli &amp; Sanjay — We're Engaged</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#3f78bf;--blue-deep:#2c5d9c;--blue-ink:#1c3f6e;
+  --gold:#e0b54a;--gold-deep:#c89a32;
+  --ivory:#f8f3e9;--paper:#fbf8f2;--photo:#dde6f1;--ink:#2b2b2b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;color:var(--ink);background:var(--paper);line-height:1.6}
+img{display:block;max-width:100%}
+.serif{font-family:'Cormorant Garamond',serif}
+.eyebrow{font-size:12px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold-deep)}
+.rulec{display:flex;align-items:center;justify-content:center;gap:14px;margin:20px auto;max-width:300px}
+.rulec .ln{height:1px;background:var(--gold);flex:1;opacity:.6}
+.rulec .dot{width:7px;height:7px;border:1px solid var(--gold);transform:rotate(45deg)}
+.flsvg path{stroke:var(--gold);stroke-width:1.1;stroke-linecap:round;opacity:.85;fill:none}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:60;background:var(--blue);text-align:center;padding:22px 0 16px;box-shadow:0 2px 24px rgba(28,63,110,.18)}
+.nav .mono{font-family:'Cormorant Garamond';font-weight:700;letter-spacing:.24em;color:var(--gold);font-size:26px}
+.nav .links{margin-top:14px;display:flex;justify-content:center;gap:36px;flex-wrap:wrap}
+.nav .links a{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:#fff;text-decoration:none;opacity:.94;padding-bottom:4px;transition:.2s}
+.nav .links a:hover{color:#fff;border-bottom:1.5px solid var(--gold)}
+.nav .links a.on{border-bottom:1.5px solid var(--gold)}
+
+/* HERO */
+.hero{position:relative;background:var(--blue);color:#fff;text-align:center;padding:54px 24px 82px;overflow:hidden}
+.corner{position:absolute;width:190px;height:190px;pointer-events:none}
+.corner.tl{top:-4px;left:-4px}
+.corner.tr{top:-4px;right:-4px;transform:scaleX(-1)}
+.corner.bl{bottom:-4px;left:-4px;transform:scaleY(-1)}
+.corner.br{bottom:-4px;right:-4px;transform:scale(-1,-1)}
+.kicker{font-size:13px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin-top:6px}
+.names{font-family:'Cormorant Garamond';font-weight:500;font-size:clamp(58px,11vw,108px);line-height:1.02;margin:16px 0 4px}
+.names .amp{color:var(--gold);font-style:italic}
+.sub{font-family:'Cormorant Garamond';font-style:italic;font-size:clamp(19px,2.6vw,26px);color:#eef4fb}
+.count{display:flex;justify-content:center;margin:24px 0 4px}
+.count div{padding:0 clamp(16px,3.4vw,28px);border-right:1px solid rgba(255,255,255,.25)}
+.count div:last-child{border:none}
+.count b{font-family:'Cormorant Garamond';font-weight:600;font-size:clamp(32px,5vw,46px);color:var(--gold);display:block;line-height:1}
+.count span{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#cfe0f4;margin-top:8px;display:block}
+.btn{display:inline-block;background:var(--gold);color:var(--blue-ink);font-weight:500;letter-spacing:.22em;text-transform:uppercase;font-size:12.5px;padding:16px 50px;text-decoration:none;margin-top:32px;transition:.2s;border:1px solid var(--gold)}
+.btn:hover{background:var(--gold-deep);border-color:var(--gold-deep);transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.btn.ghost:hover{background:#fff;color:var(--blue-ink)}
+.btn.blue{background:var(--blue);color:#fff;border-color:var(--blue)}
+.btn.blue:hover{background:var(--blue-deep);border-color:var(--blue-deep)}
+
+/* STRIP */
+.strip{background:var(--ivory);text-align:center;padding:34px 20px}
+.strip .d{font-family:'Cormorant Garamond';font-size:clamp(26px,3.6vw,36px);color:var(--blue-ink)}
+.strip .l{font-size:12.5px;letter-spacing:.26em;text-transform:uppercase;color:#9a8552;margin-top:9px}
+
+/* SECTIONS */
+section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
+.wrap{max-width:1060px;margin:0 auto}
+.center{text-align:center}
+.h2{font-family:'Cormorant Garamond';font-weight:600;color:var(--blue-ink);font-size:clamp(30px,4.4vw,48px);line-height:1.1}
+
+/* STORY */
+.story{background:#fff;display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(30px,6vw,64px);align-items:center}
+.story p{font-size:16px;color:#4a4a4a;margin-top:6px}
+.story .pic{aspect-ratio:4/5;border-radius:4px;overflow:hidden;box-shadow:0 22px 54px rgba(28,63,110,.22);border:1px solid #eadfca}
+.story .pic img{width:100%;height:100%;object-fit:cover}
+.story .rulel{display:flex;align-items:center;gap:12px;margin:16px 0;max-width:210px}
+.story .rulel .ln{height:1px;background:var(--gold);flex:1;opacity:.6}
+.story .rulel .dot{width:6px;height:6px;border:1px solid var(--gold);transform:rotate(45deg)}
+
+/* SCHEDULE (blue band) */
+.sched{background:var(--blue);color:#fff;text-align:center;position:relative;overflow:hidden}
+.sched .eyebrow{color:var(--gold)}.sched .h2{color:#fff}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:42px}
+.card{background:rgba(255,255,255,.07);border:1px solid rgba(224,181,74,.4);border-radius:6px;padding:34px 24px}
+.card .ic{font-family:'Cormorant Garamond';font-size:30px;color:var(--gold)}
+.card h3{font-family:'Cormorant Garamond';font-weight:600;font-size:24px;color:var(--gold);margin:8px 0 12px}
+.card p{font-size:14px;color:#e4edf8;line-height:1.75}
+
+/* TRAVEL */
+.travel{background:var(--paper);text-align:center}
+.tgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:42px;text-align:left}
+.tbox{background:#fff;border:1px solid #ece3d2;border-radius:6px;padding:30px 30px}
+.tbox h3{font-family:'Cormorant Garamond';font-weight:600;font-size:23px;color:var(--blue-ink)}
+.tbox p{font-size:14.5px;color:#5a5a5a;margin-top:8px}
+.tbox .tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep)}
+.tbox .tlink{display:inline-block;margin-top:14px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);text-decoration:none;border-bottom:1.5px solid var(--gold);padding-bottom:3px}
+.tintro{max-width:680px;margin:0 auto;color:#5a5a5a;font-size:16px}
+.tnote{margin-top:30px;color:#8a7a55;font-size:13px}
+
+/* GALLERY */
+.gallery{background:var(--ivory);text-align:center}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:42px}
+.grid .ph{aspect-ratio:3/4;overflow:hidden;border-radius:3px}
+.grid .ph img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.grid .ph:hover img{transform:scale(1.06)}
+.grid .ph.tall{grid-row:span 2;aspect-ratio:3/5}
+
+/* RSVP (ivory) */
+.rsvpsec{background:#fff;text-align:center}
+.rsvpsec p{color:#5a5a5a;margin-top:10px;font-size:15.5px}
+.rform{max-width:560px;margin:38px auto 0;text-align:left}
+.rrow{margin-bottom:18px}
+.rlab{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-ink);margin-bottom:8px;font-weight:500}
+.rlab .opt{color:#b3a98f;font-size:11px;letter-spacing:.06em}
+.rin,.rta{width:100%;padding:12px 14px;border:1px solid #ddd3bf;border-radius:4px;font-family:'Jost',sans-serif;font-size:15px;color:var(--ink);background:#fff;transition:.15s}
+.rin:focus,.rta:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(63,120,191,.15)}
+.rta{min-height:92px;resize:vertical}
+.rtwo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.attend{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.attend label{display:flex;align-items:center;justify-content:center;padding:14px;border:1px solid #ddd3bf;border-radius:5px;cursor:pointer;font-size:14.5px;color:var(--blue-ink);background:#fff;transition:.15s}
+.attend label:hover{border-color:var(--gold)}
+.attend label:has(input:checked){background:var(--blue);color:#fff;border-color:var(--blue)}
+.attend input{position:absolute;opacity:0;width:0;height:0}
+.rform button.btn{border:none;cursor:pointer}
+@media(max-width:600px){.rtwo,.attend{grid-template-columns:1fr}}
+
+/* FOOTER */
+.foot{background:var(--blue-ink);color:#cfe0f4;text-align:center;padding:46px 20px}
+.foot .m{font-family:'Cormorant Garamond';font-weight:700;letter-spacing:.24em;color:var(--gold);font-size:26px}
+.foot .fl{margin-top:16px;display:flex;gap:26px;justify-content:center;flex-wrap:wrap}
+.foot .fl a{color:#cfe0f4;text-decoration:none;font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.85}
+.foot .fl a:hover{color:var(--gold)}
+.foot .cp{margin-top:20px;font-size:11px;letter-spacing:.12em;color:#7f9bc0}
+
+@media(max-width:760px){
+  .story{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+  .tgrid{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .nav .links{gap:18px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="mono">A &nbsp;&amp;&nbsp; S</div>
+  <div class="links">
+    <a class="on" href="#top">Home</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#travel">Travel</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#rsvp">RSVP</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <svg class="corner tl flsvg" viewBox="0 0 150 150"><path d="M6 60 C30 56 44 40 50 14 M6 60 C26 64 40 60 52 50 M6 60 C24 78 22 96 14 112 M30 30 C40 36 42 46 40 56 M70 18 C76 28 74 40 66 46"/><circle cx="50" cy="14" r="4" fill="#f0d486" stroke="none"/><circle cx="14" cy="112" r="3.4" fill="#f0d486" stroke="none"/><circle cx="40" cy="56" r="3" fill="#cfe0f4" stroke="none"/><circle cx="66" cy="46" r="3" fill="#cfe0f4" stroke="none"/></svg>
+  <svg class="corner br flsvg" viewBox="0 0 150 150"><path d="M6 60 C30 56 44 40 50 14 M6 60 C26 64 40 60 52 50 M6 60 C24 78 22 96 14 112 M30 30 C40 36 42 46 40 56 M70 18 C76 28 74 40 66 46"/><circle cx="50" cy="14" r="4" fill="#f0d486" stroke="none"/><circle cx="14" cy="112" r="3.4" fill="#f0d486" stroke="none"/><circle cx="40" cy="56" r="3" fill="#cfe0f4" stroke="none"/></svg>
+  <div class="kicker">We're Engaged</div>
+  <div class="names serif">Anjuli <span class="amp">&amp;</span> Sanjay</div>
+  <div class="sub">together with their families</div>
+  <div class="rulec"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
+  <div class="count" id="count">
+    <div><b id="d">—</b><span>Days</span></div>
+    <div><b id="h">—</b><span>Hrs</span></div>
+    <div><b id="m">—</b><span>Min</span></div>
+    <div><b id="s">—</b><span>Sec</span></div>
+  </div>
+  <a class="btn" href="#rsvp">RSVP</a>
+</header>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="d serif">Saturday, December 19, 2026</div>
+  <div class="l">The Ranch at Silver Creek &nbsp;·&nbsp; San Jose, California</div>
+</div>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div>
+    <div class="eyebrow">Our Story</div>
+    <h2 class="h2">Fourteen years in the making</h2>
+    <div class="rulel"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
+    <p>It started at UCLA and never really stopped — through Peru, through Paris, through a thousand ordinary days that somehow added up to this. On a quiet evening in Napa, the answer was always going to be yes.</p>
+    <p style="margin-top:14px">Now we'd love nothing more than to gather the people we love and raise a glass to the next chapter. Come celebrate with us.</p>
+  </div>
+  <div class="pic"><img src="https://images.zola.com/566c03b9-84dc-4dc4-890e-a11afeab319f?w=1100" alt="Anjuli and Sanjay at UCLA"></div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="sched" id="schedule">
+  <svg class="corner tr flsvg" viewBox="0 0 150 150" style="opacity:.5"><path d="M6 60 C30 56 44 40 50 14 M6 60 C26 64 40 60 52 50 M6 60 C24 78 22 96 14 112 M30 30 C40 36 42 46 40 56"/><circle cx="50" cy="14" r="3.4" fill="#f0d486" stroke="none"/></svg>
+  <div class="wrap">
+    <div class="eyebrow">The Celebration</div>
+    <h2 class="h2">Engagement Party</h2>
+    <div class="rulec"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
+    <div class="cards">
+      <div class="card"><div class="ic">✦</div><h3>When</h3><p>Saturday, December 19, 2026<br>5:00 PM – 9:00 PM<br><em>Mehendi &amp; appetizers from 4:30 PM</em></p></div>
+      <div class="card"><div class="ic">✦</div><h3>Where</h3><p>The Ranch at Silver Creek<br>by Wedgewood Weddings<br>4601 Hill Top View Ln<br>San Jose, CA 95138</p></div>
+      <div class="card"><div class="ic">✦</div><h3>Attire</h3><p>Semi-formal evening wear<br>Indian attire encouraged</p></div>
+    </div>
+    <p style="max-width:660px;margin:36px auto 0;color:#e4edf8;font-size:15.5px;line-height:1.8">Come celebrate our engagement with us — a fun-filled evening of delicious food, activities, and quality time together. Thank you for being a part of our lives!</p>
+    <a class="btn ghost" href="https://maps.google.com/?q=The+Ranch+at+Silver+Creek+San+Jose" target="_blank" style="margin-top:36px">Map &amp; Directions</a>
+  </div>
+</section>
+
+<!-- TRAVEL -->
+<section class="travel" id="travel">
+  <div class="wrap">
+    <div class="eyebrow">For Out-of-Town Guests</div>
+    <h2 class="h2">Travel &amp; Stay</h2>
+    <div class="rulec"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
+    <p class="tintro">We've reserved discounted room blocks at two hotels, both about 15 minutes' drive from the venue. Please book by <strong>Tuesday, November 17, 2026</strong> to receive the group rate.</p>
+    <div class="tgrid">
+      <div class="tbox"><div class="tag">Hotel Block</div><h3>Hampton Inn San Jose — Cherry Ave</h3><p>5190 Cherry Avenue<br>San Jose, CA 95118<br>408-266-3535</p><a class="tlink" href="https://www.hilton.com/en/attend-my-event/dasikaweddingroomblock/" target="_blank" rel="noopener">Book Room Block →</a></div>
+      <div class="tbox"><div class="tag">Hotel Block</div><h3>Residence Inn by Marriott — San Jose South</h3><p>6111 San Ignacio Avenue<br>San Jose, CA 95119<br>408-226-7676</p><a class="tlink" href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1780437821344&amp;key=GRP&amp;app=resvlink" target="_blank" rel="noopener">Book Room Block →</a></div>
+    </div>
+    <p class="tnote">Prefer to arrange your own stay? You're welcome to book any nearby hotel or an Airbnb — these blocks are here purely for convenience. Both hotels are ~15 minutes from The Ranch at Silver Creek, and San José International (SJC) is roughly 20 minutes away.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="eyebrow">Moments</div>
+    <h2 class="h2">A few of our favorites</h2>
+    <div class="rulec"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
+    <div class="grid">
+      <div class="ph tall"><img src="https://images.zola.com/08cae493-b3ad-4acd-8d41-bee5b42aaddc?w=800" alt=""></div>
+      <div class="ph"><img src="https://images.zola.com/5e06416f-aa46-4217-9711-1afaaeb1cb6d?w=800" alt=""></div>
+      <div class="ph"><img src="https://images.zola.com/f4ea90ba-7d29-4e3f-81fa-47414ac8d57f?w=800" alt=""></div>
+      <div class="ph tall"><img src="https://images.zola.com/fb6e5ebc-0299-4139-98ea-8a2878184a40?w=800" alt=""></div>
+      <div class="ph"><img src="https://images.zola.com/b59bbbf5-4ec9-4857-a225-d38b40999e72?w=800" alt=""></div>
+      <div class="ph"><img src="https://images.zola.com/566c03b9-84dc-4dc4-890e-a11afeab319f?w=800" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section class="rsvpsec" id="rsvp">
+  <div class="wrap">
+    <div class="eyebrow">Join Us</div>
+    <h2 class="h2">Will you be there?</h2>
+    <div class="rulec"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
+    <p>Kindly let us know by <strong>November 1, 2026</strong>. Questions? Text us anytime — our number is on your invitation.</p>
+
+    <form id="rsvpForm" class="rform" action="https://formspree.io/f/xojokqza" method="POST">
+      <input type="hidden" name="_subject" value="New Engagement RSVP">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+      <div class="rrow">
+        <label class="rlab" for="f_name">Your name</label>
+        <input class="rin" id="f_name" type="text" name="name" required placeholder="First &amp; last name">
+      </div>
+
+      <div class="rrow">
+        <label class="rlab">Will you attend?</label>
+        <div class="attend">
+          <label><input type="radio" name="attending" value="Joyfully accepts" required>Joyfully accepts</label>
+          <label><input type="radio" name="attending" value="Regretfully declines">Regretfully declines</label>
+        </div>
+      </div>
+
+      <div id="acceptFields" style="display:none">
+        <div class="rrow">
+          <label class="rlab" for="f_party">Number in your party</label>
+          <input class="rin" id="f_party" type="number" name="party_size" min="1" max="12" placeholder="e.g. 2">
+        </div>
+        <div class="rrow">
+          <label class="rlab" for="f_guests">Guest names <span class="opt">(optional)</span></label>
+          <input class="rin" id="f_guests" type="text" name="guest_names" placeholder="Everyone joining you">
+        </div>
+        <div class="rrow">
+          <label class="rlab" for="f_diet">Meal / dietary needs <span class="opt">(optional)</span></label>
+          <input class="rin" id="f_diet" type="text" name="dietary" placeholder="Vegetarian, allergies, etc.">
+        </div>
+      </div>
+
+      <div class="rtwo">
+        <div class="rrow">
+          <label class="rlab" for="f_email">Email <span class="opt">(optional)</span></label>
+          <input class="rin" id="f_email" type="email" name="email" placeholder="you@email.com">
+        </div>
+        <div class="rrow">
+          <label class="rlab" for="f_phone">Phone <span class="opt">(optional)</span></label>
+          <input class="rin" id="f_phone" type="tel" name="phone" placeholder="So we can reach you">
+        </div>
+      </div>
+
+      <div class="rrow">
+        <label class="rlab" for="f_note">A note or question <span class="opt">(optional)</span></label>
+        <textarea class="rta" id="f_note" name="note" placeholder="Anything you'd like us to know"></textarea>
+      </div>
+
+      <div style="text-align:center;margin-top:26px">
+        <button type="submit" class="btn blue">Send RSVP</button>
+      </div>
+      <p id="rsvpErr" style="display:none;color:#b23b3b;margin-top:16px;font-size:14px;text-align:center">Something went wrong — please try again, or just text us.</p>
+    </form>
+
+    <div id="rsvpThanks" style="display:none;max-width:520px;margin:32px auto 0">
+      <div style="font-family:'Cormorant Garamond';font-weight:600;font-size:32px;color:var(--blue-ink)">Thank you!</div>
+      <p style="color:#5a5a5a;margin-top:8px">Your RSVP is in — we can't wait to celebrate with you.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="m serif">A &nbsp;&amp;&nbsp; S</div>
+  <div class="fl"><a href="#top">Home</a><a href="#schedule">Schedule</a><a href="#travel">Travel</a><a href="#gallery">Gallery</a><a href="#rsvp">RSVP</a></div>
+  <div class="cp">Anjuli &amp; Sanjay · December 19, 2026 · San Jose, California</div>
+</footer>
+
+<script>
+const target=new Date('2026-12-19T17:00:00-08:00').getTime();
+function tick(){
+  const gap=Math.max(0,target-Date.now());
+  const d=Math.floor(gap/86400000),h=Math.floor(gap/3600000)%24,m=Math.floor(gap/60000)%60,s=Math.floor(gap/1000)%60;
+  const p=n=>String(n).padStart(2,'0');
+  document.getElementById('d').textContent=d;
+  document.getElementById('h').textContent=p(h);
+  document.getElementById('m').textContent=p(m);
+  document.getElementById('s').textContent=p(s);
+}
+tick();setInterval(tick,1000);
+
+// RSVP form: conditional fields + AJAX submit
+(function(){
+  var form=document.getElementById('rsvpForm');
+  if(!form) return;
+  var acc=document.getElementById('acceptFields');
+  function tog(){var v=form.querySelector('input[name=attending]:checked');acc.style.display=(v&&v.value.indexOf('accept')>-1)?'block':'none';}
+  Array.prototype.forEach.call(form.querySelectorAll('input[name=attending]'),function(r){r.addEventListener('change',tog);});
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var btn=form.querySelector('button[type=submit]'),err=document.getElementById('rsvpErr');
+    err.style.display='none';btn.disabled=true;btn.textContent='Sending…';
+    fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+      .then(function(res){
+        if(res.ok){form.style.display='none';var t=document.getElementById('rsvpThanks');t.style.display='block';t.scrollIntoView({behavior:'smooth',block:'center'});}
+        else{err.style.display='block';btn.disabled=false;btn.textContent='Send RSVP';}
+      })
+      .catch(function(){err.style.display='block';btn.disabled=false;btn.textContent='Send RSVP';});
+  });
+})();
+</script>
+</body>
+</html>
