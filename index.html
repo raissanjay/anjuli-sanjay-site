@@ -302,7 +302,7 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
 
     <div id="rsvpThanks" style="display:none;max-width:520px;margin:32px auto 0">
       <div style="font-family:'Cormorant Garamond';font-weight:600;font-size:32px;color:var(--blue-ink)">Thank you!</div>
-      <p style="color:#5a5a5a;margin-top:8px">Your RSVP is in — we can't wait to celebrate with you.</p>
+      <p id="thanksMsg" style="color:#5a5a5a;margin-top:8px">Your RSVP is in — we can't wait to celebrate with you.</p>
     </div>
   </div>
 </section>
@@ -339,7 +339,7 @@ tick();setInterval(tick,1000);
     err.style.display='none';btn.disabled=true;btn.textContent='Sending…';
     fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
       .then(function(res){
-        if(res.ok){form.style.display='none';var t=document.getElementById('rsvpThanks');t.style.display='block';t.scrollIntoView({behavior:'smooth',block:'center'});}
+        if(res.ok){var _no=(form.querySelector('input[name=attending]:checked')||{}).value==='No';var _m=document.getElementById('thanksMsg');if(_m)_m.textContent=_no?"Thank you for letting us know. You'll be missed!":"Your RSVP is in, we can't wait to celebrate with you.";form.style.display='none';var t=document.getElementById('rsvpThanks');t.style.display='block';t.scrollIntoView({behavior:'smooth',block:'center'});}
         else{err.style.display='block';btn.disabled=false;btn.textContent='Send RSVP';}
       })
       .catch(function(){err.style.display='block';btn.disabled=false;btn.textContent='Send RSVP';});
