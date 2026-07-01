@@ -98,7 +98,7 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
 /* GALLERY (story) */
 .gallery{background:var(--ivory);text-align:center}
 .storyintro{background:#fff}
-.gstory{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:46px}
+.gstory{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:46px}
 .gitem{display:flex;flex-direction:column;text-align:center}
 .gframe{aspect-ratio:4/5;overflow:hidden;border-radius:4px;box-shadow:0 12px 30px rgba(28,63,110,.16);background:var(--photo)}
 .gframe img{width:100%;height:100%;object-fit:cover;transition:.55s}
@@ -183,14 +183,15 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
 </div>
 
 <!-- STORY -->
-<section class="storyintro" id="story">
-  <div class="wrap" style="max-width:720px;text-align:center">
+<section class="story" id="story">
+  <div>
     <div class="eyebrow">Our Story</div>
     <h2 class="h2">The road to yes</h2>
-    <div class="rulec"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
-    <p style="font-size:16px;color:#4a4a4a">From UCLA to Peru to Paris to a quiet evening in Napa, our story kept leading right where it was meant to. In Napa, the answer was an easy yes.</p>
-    <p style="font-size:16px;color:#4a4a4a;margin-top:14px">Now we'd love nothing more than to gather the people we love and raise a glass to the next chapter. Come celebrate with us.</p>
+    <div class="rulel"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
+    <p>From UCLA to Peru to Paris to a quiet evening in Napa, our story kept leading right where it was meant to. In Napa, the answer was an easy yes.</p>
+    <p style="margin-top:14px">Now we&#39;re so excited to gather the people we love, raise a glass, and celebrate the next chapter together.</p>
   </div>
+  <div class="pic"><img src="https://images.zola.com/08cae493-b3ad-4acd-8d41-bee5b42aaddc?w=1100" alt="Anjuli and Sanjay"></div>
 </section>
 
 <!-- SCHEDULE -->
@@ -201,9 +202,9 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
     <h2 class="h2">Engagement Party</h2>
     <div class="rulec"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
     <div class="cards">
-      <div class="card"><div class="ic">✦</div><h3>When</h3><p>Saturday, December 19, 2026<br>5:00 PM – 9:00 PM<br><em>Mehendi &amp; appetizers from 4:30 PM</em></p></div>
+      <div class="card"><div class="ic">✦</div><h3>When</h3><p>Saturday, December 19, 2026<br><br>Mehendi &amp; appetizers: 4:30 PM<br>Engagement celebration: 5:00-9:00 PM</p></div>
       <div class="card"><div class="ic">✦</div><h3>Where</h3><p>The Ranch at Silver Creek<br>by Wedgewood Weddings<br>4601 Hill Top View Ln<br>San Jose, CA 95138</p></div>
-      <div class="card"><div class="ic">✦</div><h3>Attire</h3><p>Semi-formal evening wear</p></div>
+      <div class="card"><div class="ic">✦</div><h3>Attire</h3><p>Semi-formal evening wear<br>Indian or Western attire welcome</p></div>
     </div>
     <p style="max-width:660px;margin:36px auto 0;color:#e4edf8;font-size:15.5px;line-height:1.8">Come celebrate our engagement with us — a fun-filled evening of delicious food, activities, and quality time together. Thank you for being a part of our lives!</p>
     <a class="btn ghost" href="https://maps.google.com/?q=The+Ranch+at+Silver+Creek+San+Jose" target="_blank" style="margin-top:36px">Map &amp; Directions</a>
@@ -221,7 +222,7 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
       <div class="tbox"><div class="tag">Hotel Block</div><h3>Hampton Inn San Jose — Cherry Ave</h3><p>5190 Cherry Avenue<br>San Jose, CA 95118<br>408-266-3535</p><a class="tlink" href="https://www.hilton.com/en/attend-my-event/dasikaweddingroomblock/" target="_blank" rel="noopener">Book Room Block →</a></div>
       <div class="tbox"><div class="tag">Hotel Block</div><h3>Residence Inn by Marriott — San Jose South</h3><p>6111 San Ignacio Avenue<br>San Jose, CA 95119<br>408-226-7676</p><a class="tlink" href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1780437821344&amp;key=GRP&amp;app=resvlink" target="_blank" rel="noopener">Book Room Block →</a></div>
     </div>
-    <p class="tnote">Prefer to arrange your own stay? You're welcome to book any nearby hotel or an Airbnb — these blocks are here purely for convenience. Both hotels are ~15 minutes from The Ranch at Silver Creek, and San José International (SJC) is roughly 20 minutes away.</p>
+    <p class="tnote">Prefer to arrange your own stay? You're welcome to book any nearby hotel or an Airbnb — these blocks are simply here for convenience. Both hotels are ~15 minutes from The Ranch at Silver Creek, and San José International (SJC) is roughly 20 minutes away.</p>
   </div>
 </section>
 
@@ -229,14 +230,13 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
 <section class="gallery" id="gallery">
   <div class="wrap">
     <div class="eyebrow">In Photos</div>
-    <h2 class="h2">Our story in five moments</h2>
+    <h2 class="h2">Our story in four moments</h2>
     <div class="rulec"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
     <div class="gstory">
       <div class="gitem"><div class="gframe"><img src="https://images.zola.com/566c03b9-84dc-4dc4-890e-a11afeab319f?w=800" alt=""></div><div class="gnum">01</div><div class="gcap">The beginning</div><div class="gloc">UCLA</div></div>
       <div class="gitem"><div class="gframe"><img src="https://images.zola.com/fb6e5ebc-0299-4139-98ea-8a2878184a40?w=800" alt=""></div><div class="gnum">02</div><div class="gcap">The adventures</div><div class="gloc">Peru</div></div>
       <div class="gitem"><div class="gframe"><img src="https://images.zola.com/5e06416f-aa46-4217-9711-1afaaeb1cb6d?w=800" alt=""></div><div class="gnum">03</div><div class="gcap">The city we&#39;ll always remember</div><div class="gloc">Paris</div></div>
       <div class="gitem"><div class="gframe"><img src="https://images.zola.com/f4ea90ba-7d29-4e3f-81fa-47414ac8d57f?w=800" alt=""></div><div class="gnum">04</div><div class="gcap">The easiest yes</div><div class="gloc">Napa</div></div>
-      <div class="gitem"><div class="gframe soon"><span>Japan<br>photo coming soon</span></div><div class="gnum">05</div><div class="gcap">The next chapter</div><div class="gloc">Japan</div></div>
     </div>
   </div>
 </section>
@@ -247,7 +247,7 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
     <div class="eyebrow">Join Us</div>
     <h2 class="h2">Will you be there?</h2>
     <div class="rulec"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
-    <p>Kindly let us know by <strong>November 1, 2026</strong>. Questions? Text us anytime — our number is on your invitation.</p>
+    <p><strong>Please RSVP by November 1, 2026.</strong><br>Questions? Text us anytime, our number is on your invitation.</p>
 
     <form id="rsvpForm" class="rform" action="https://formspree.io/f/xojokqza" method="POST">
       <input type="hidden" name="_subject" value="New Engagement RSVP">
