@@ -248,7 +248,7 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
     <div class="eyebrow">Join Us</div>
     <h2 class="h2">Will you be there?</h2>
     <div class="rulec"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
-    <p><strong>Please RSVP by November 1, 2026.</strong><br>Questions? Text us anytime, our number is on your invitation.</p>
+    <p><strong>Please RSVP by September 1, 2026.</strong><br>Questions? Text us anytime, our number is on your invitation.</p>
 
     <form id="rsvpForm" class="rform" action="https://formspree.io/f/xojokqza" method="POST">
       <input type="hidden" name="_subject" value="New Engagement RSVP">
@@ -273,12 +273,12 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
           <input class="rin" id="f_party" type="number" name="party_size" min="1" max="12" placeholder="e.g. 2">
         </div>
         <div class="rrow">
-          <label class="rlab" for="f_guests">Guest names <span class="opt">(optional)</span></label>
-          <input class="rin" id="f_guests" type="text" name="guest_names" placeholder="Everyone joining you">
+          <label class="rlab" for="f_guests">Names of everyone attending</label>
+          <input class="rin" id="f_guests" type="text" name="guest_names" placeholder="First &amp; last names of your whole party">
         </div>
         <div class="rrow">
-          <label class="rlab" for="f_diet">Meal / dietary needs <span class="opt">(optional)</span></label>
-          <input class="rin" id="f_diet" type="text" name="dietary" placeholder="Vegetarian, allergies, etc.">
+          <label class="rlab" for="f_diet">Food allergies or dietary preferences <span class="opt">(optional)</span></label>
+          <input class="rin" id="f_diet" type="text" name="dietary" placeholder="Vegetarian, nut allergy, etc.">
         </div>
       </div>
 
@@ -337,7 +337,7 @@ tick();setInterval(tick,1000);
   var form=document.getElementById('rsvpForm');
   if(!form) return;
   var acc=document.getElementById('acceptFields');
-  function tog(){var v=form.querySelector('input[name=attending]:checked');var show=(v&&v.value==='Yes');acc.style.display=show?'block':'none';var p=document.getElementById('f_party');if(p){if(show)p.setAttribute('required','required');else p.removeAttribute('required');}}
+  function tog(){var v=form.querySelector('input[name=attending]:checked');var show=(v&&v.value==='Yes');acc.style.display=show?'block':'none';['f_party','f_guests'].forEach(function(id){var e=document.getElementById(id);if(e){if(show)e.setAttribute('required','required');else e.removeAttribute('required');}});}
   Array.prototype.forEach.call(form.querySelectorAll('input[name=attending]'),function(r){r.addEventListener('change',tog);});
   form.addEventListener('submit',function(e){
     e.preventDefault();
