@@ -129,13 +129,15 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
 .rform button.btn{border:none;cursor:pointer}
 @media(max-width:600px){.rtwo,.attend{grid-template-columns:1fr}}
 
-/* GOOD TO KNOW */
+/* BEFORE YOU ARRIVE */
 .faq{background:#fff;text-align:center}
-.faqgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:44px;text-align:left}
+.faqsub{font-family:'Cormorant Garamond';font-style:italic;font-size:20px;color:#6a6a6a;margin-top:10px}
+.faqgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:40px;text-align:left}
 .faqitem{background:var(--paper);border:1px solid #ece3d2;border-radius:6px;padding:26px 26px}
 .faqitem .ic{font-family:'Cormorant Garamond';font-size:24px;color:var(--gold);line-height:1}
 .faqitem h3{font-family:'Cormorant Garamond';font-weight:600;font-size:22px;color:var(--blue-ink);margin:6px 0 8px}
 .faqitem p{font-size:14.5px;color:#5a5a5a;line-height:1.7}
+.faqaccess{margin-top:30px;color:#8a7a55;font-size:13px;font-style:italic}
 
 /* FOOTER */
 .foot{background:var(--blue-ink);color:#cfe0f4;text-align:center;padding:46px 20px}
@@ -234,21 +236,21 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
   </div>
 </section>
 
-<!-- GOOD TO KNOW -->
+<!-- BEFORE YOU ARRIVE -->
 <section class="faq" id="faq">
   <div class="wrap">
-    <div class="eyebrow">Before You Come</div>
-    <h2 class="h2">Good to Know</h2>
+    <div class="eyebrow">A Few Details</div>
+    <h2 class="h2">Before You Arrive</h2>
+    <p class="faqsub">A few helpful notes</p>
     <div class="rulec"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
     <div class="faqgrid">
+      <div class="faqitem"><div class="ic">✦</div><h3>Guest Count</h3><p>Due to limited venue capacity, we&#39;re only able to accommodate the guests included in each household&#39;s invitation.</p></div>
       <div class="faqitem"><div class="ic">✦</div><h3>Parking</h3><p>Complimentary parking is available at the venue.</p></div>
-      <div class="faqitem"><div class="ic">✦</div><h3>Children</h3><p>Children are welcome.</p></div>
-      <div class="faqitem"><div class="ic">✦</div><h3>Food &amp; Drink</h3><p>Dinner, appetizers, desserts, and non-alcoholic options will be served.</p></div>
+      <div class="faqitem"><div class="ic">✦</div><h3>Food &amp; Drink</h3><p>Appetizers, dinner, desserts, and non-alcoholic options will be served.</p></div>
       <div class="faqitem"><div class="ic">✦</div><h3>Mehendi</h3><p>Mehendi will be available beginning at 4:30 PM.</p></div>
-      <div class="faqitem"><div class="ic">✦</div><h3>Attire</h3><p>Semi-formal attire; Indian or Western welcome.</p></div>
       <div class="faqitem"><div class="ic">✦</div><h3>Gifts</h3><p>No gifts, please — your presence and blessings are enough.</p></div>
-      <div class="faqitem"><div class="ic">✦</div><h3>Accessibility</h3><p>Please let us know in your RSVP if you need accessibility accommodations.</p></div>
     </div>
+    <p class="faqaccess">Please let us know in your RSVP if you need any accessibility accommodations.</p>
   </div>
 </section>
 
@@ -295,13 +297,14 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
 
       <div id="acceptFields" style="display:none">
         <div class="rrow">
-          <label class="rlab" for="f_party">How many will attend, including you?</label>
+          <label class="rlab" for="f_party">How many guests from your household will attend?</label>
           <input class="rin" id="f_party" type="number" name="party_size" min="1" max="12" placeholder="e.g. 2">
+          <p style="font-size:12px;color:#8a7a55;margin:6px 0 0">Please RSVP only for the guests included in your household&#39;s invitation.</p>
         </div>
         <div class="rrow">
           <label class="rlab" for="f_guests">Names of everyone attending</label>
           <input class="rin" id="f_guests" type="text" name="guest_names" placeholder="First &amp; last names of your whole party">
-          <p style="font-size:12px;color:#8a7a55;margin:6px 0 0">Please include adults and children so we can plan food and seating.</p>
+          <p style="font-size:12px;color:#8a7a55;margin:6px 0 0">Please list each person attending so we can plan food and seating.</p>
         </div>
         <div class="rrow">
           <label class="rlab" for="f_diet">Food allergies or dietary preferences <span class="opt">(optional)</span></label>
@@ -323,10 +326,7 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
       <div class="rrow">
         <label class="rlab" for="f_addr">Mailing address</label>
         <input class="rin" id="f_addr" type="text" name="mailing_address" required placeholder="Street, city, state, ZIP">
-        <p style="font-size:12px;color:#8a7a55;margin:6px 0 0">So we can send you a wedding invitation down the road.</p>
       </div>
-
-      <p style="font-size:12px;color:#8a7a55;margin:-2px 0 18px">We'll only use your address, phone, and email to share event details and updates.</p>
 
       <div class="rrow">
         <label class="rlab" for="f_note">A note or question <span class="opt">(optional)</span></label>
