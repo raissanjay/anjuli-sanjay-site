@@ -284,7 +284,7 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
       <p style="color:#5a5a5a;margin-top:6px;font-size:14.5px">Please use the same email address so we can match it to your earlier response.</p>
     </div>
 
-    <form id="rsvpForm" class="rform" action="https://formspree.io/f/xojokqza" method="POST">
+    <form id="rsvpForm" class="rform" action="https://script.google.com/macros/s/AKfycbxRTWejzDrfFiflMYv-IYAOjgAR0E8bFjJCwUF82ChMo1_KXmmQLxIokzKA-y-g5UZb/exec" method="POST">
       <input type="hidden" name="_subject" value="New Engagement RSVP">
       <input type="hidden" name="submission_type" value="rsvp">
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
@@ -370,7 +370,7 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
     <div id="questionWrap" style="display:none;margin-top:40px">
       <h3 id="qHeading" class="serif" style="font-weight:600;font-size:26px;color:var(--blue-ink);text-align:center">Have a question?</h3>
       <p id="qSub" style="color:#5a5a5a;margin:6px 0 0;font-size:15px;text-align:center">Send us a note and we&#39;ll get back to you.</p>
-      <form id="questionForm" class="rform" action="https://formspree.io/f/xojokqza" method="POST">
+      <form id="questionForm" class="rform" action="https://script.google.com/macros/s/AKfycbxRTWejzDrfFiflMYv-IYAOjgAR0E8bFjJCwUF82ChMo1_KXmmQLxIokzKA-y-g5UZb/exec" method="POST">
         <input type="hidden" name="_subject" value="New Question">
         <input type="hidden" name="submission_type" value="question">
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
@@ -459,8 +459,8 @@ tick();setInterval(tick,1000);
     e.preventDefault();
     var btn=form.querySelector('button[type=submit]'),err=document.getElementById('rsvpErr');
     err.style.display='none';btn.disabled=true;btn.textContent='Sending…';
-    fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
-      .then(function(res){if(res.ok){try{localStorage.setItem('as_rsvped','1');}catch(e){}btn.disabled=false;btn.textContent='Send RSVP';stateDone();done.scrollIntoView({behavior:'smooth',block:'center'});}else{err.style.display='block';btn.disabled=false;btn.textContent='Send RSVP';}})
+    fetch(form.action,{method:'POST',body:new FormData(form),mode:'no-cors'})
+      .then(function(){try{localStorage.setItem('as_rsvped','1');}catch(e){}btn.disabled=false;btn.textContent='Send RSVP';stateDone();done.scrollIntoView({behavior:'smooth',block:'center'});})
       .catch(function(){err.style.display='block';btn.disabled=false;btn.textContent='Send RSVP';});
   });
 })();
@@ -472,8 +472,8 @@ tick();setInterval(tick,1000);
     e.preventDefault();
     var btn=form.querySelector('button[type=submit]'),err=document.getElementById('qErr');
     err.style.display='none';btn.disabled=true;btn.textContent='Sending…';
-    fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
-      .then(function(res){if(res.ok){form.style.display='none';thanks.style.display='block';thanks.scrollIntoView({behavior:'smooth',block:'center'});}else{err.style.display='block';btn.disabled=false;btn.textContent='Send Question';}})
+    fetch(form.action,{method:'POST',body:new FormData(form),mode:'no-cors'})
+      .then(function(){form.style.display='none';thanks.style.display='block';thanks.scrollIntoView({behavior:'smooth',block:'center'});})
       .catch(function(){err.style.display='block';btn.disabled=false;btn.textContent='Send Question';});
   });
 })();
