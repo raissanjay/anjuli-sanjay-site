@@ -54,6 +54,9 @@ img{display:block;max-width:100%}
 .btn.ghost:hover{background:#fff;color:var(--blue-ink)}
 .btn.blue{background:var(--blue);color:#fff;border-color:var(--blue)}
 .btn.blue:hover{background:var(--blue-deep);border-color:var(--blue-deep)}
+.btn.line{background:transparent;color:var(--blue);border-color:var(--blue)}
+.btn.line:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.doneBtns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:24px}
 
 /* STRIP */
 .strip{background:var(--ivory);text-align:center;padding:34px 20px}
@@ -113,8 +116,6 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
 /* RSVP (ivory) */
 .rsvpsec{background:#fff;text-align:center}
 .rsvpsec p{color:#5a5a5a;margin-top:10px;font-size:15.5px}
-.qsec{background:var(--ivory);text-align:center}
-.qsec p{color:#5a5a5a;margin-top:10px;font-size:15.5px}
 .rform{max-width:560px;margin:38px auto 0;text-align:left}
 .rrow{margin-bottom:18px}
 .rlab{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-ink);margin-bottom:8px;font-weight:500}
@@ -281,7 +282,7 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
 
     <form id="rsvpForm" class="rform" action="https://formspree.io/f/xojokqza" method="POST">
       <input type="hidden" name="_subject" value="New Engagement RSVP">
-      <input type="hidden" name="form_type" value="rsvp">
+      <input type="hidden" name="submission_type" value="rsvp">
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
       <div class="rrow">
@@ -331,7 +332,7 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
       </div>
 
       <div class="rrow">
-        <label class="rlab" for="f_note">A note <span class="opt">(optional)</span></label>
+        <label class="rlab" for="f_note">A note or question <span class="opt">(optional)</span></label>
         <textarea class="rta" id="f_note" name="note" placeholder="Anything you'd like us to know"></textarea>
       </div>
 
@@ -341,48 +342,43 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
       <p id="rsvpErr" style="display:none;color:#b23b3b;margin-top:16px;font-size:14px;text-align:center">Something went wrong — please try again.</p>
     </form>
 
-    <p id="askLink" style="text-align:center;margin-top:22px;font-size:13.5px;color:#5a5a5a">Already RSVP&#39;d and have a question? <a href="#question" style="color:var(--blue);border-bottom:1px solid var(--gold);text-decoration:none">Send us a note below.</a></p>
-
-    <div id="rsvpThanks" style="display:none;max-width:520px;margin:32px auto 0;text-align:center">
+    <div id="rsvpDone" style="display:none;max-width:560px;margin:0 auto;text-align:center">
       <div class="serif" style="font-weight:600;font-size:32px;color:var(--blue-ink)">Thank you!</div>
-      <p style="color:#5a5a5a;margin-top:8px">We received your RSVP. Need to update it? Just submit the form again using the same email.</p>
+      <p style="color:#5a5a5a;margin-top:8px">We received your RSVP. Need to make a change? Submit the RSVP form again using the same email address.</p>
+      <div class="doneBtns">
+        <button type="button" id="btnUpdate" class="btn blue">Update RSVP</button>
+        <button type="button" id="btnAsk" class="btn line">Ask a Question</button>
+      </div>
     </div>
-  </div>
-</section>
 
-<!-- QUESTION -->
-<section class="qsec" id="question">
-  <div class="wrap">
-    <div class="eyebrow">Questions</div>
-    <h2 class="h2">Have a question?</h2>
-    <div class="rulec"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
-    <p>Send us a note and we&#39;ll text you back.</p>
-
-    <form id="questionForm" class="rform" action="https://formspree.io/f/xojokqza" method="POST">
-      <input type="hidden" name="_subject" value="New Question">
-      <input type="hidden" name="form_type" value="question">
-      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-      <div class="rrow">
-        <label class="rlab" for="q_name">Your name</label>
-        <input class="rin" id="q_name" type="text" name="name" required placeholder="First &amp; last name">
+    <div id="questionWrap" style="display:none;margin-top:40px">
+      <h3 class="serif" style="font-weight:600;font-size:26px;color:var(--blue-ink);text-align:center">Have a question?</h3>
+      <p style="color:#5a5a5a;margin:6px 0 0;font-size:15px;text-align:center">Send us a note and we&#39;ll get back to you.</p>
+      <form id="questionForm" class="rform" action="https://formspree.io/f/xojokqza" method="POST">
+        <input type="hidden" name="_subject" value="New Question">
+        <input type="hidden" name="submission_type" value="question">
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="rrow">
+          <label class="rlab" for="q_name">Your name</label>
+          <input class="rin" id="q_name" type="text" name="name" required placeholder="First &amp; last name">
+        </div>
+        <div class="rrow">
+          <label class="rlab" for="q_phone">Phone</label>
+          <input class="rin" id="q_phone" type="tel" name="phone" required placeholder="Best number to reach you">
+        </div>
+        <div class="rrow">
+          <label class="rlab" for="q_text">Question</label>
+          <textarea class="rta" id="q_text" name="question" required placeholder="What would you like to ask?"></textarea>
+        </div>
+        <div style="text-align:center;margin-top:26px">
+          <button type="submit" class="btn blue">Send Question</button>
+        </div>
+        <p id="qErr" style="display:none;color:#b23b3b;margin-top:16px;font-size:14px;text-align:center">Something went wrong — please try again.</p>
+      </form>
+      <div id="qThanks" style="display:none;text-align:center;margin-top:8px">
+        <div class="serif" style="font-weight:600;font-size:26px;color:var(--blue-ink)">Thank you!</div>
+        <p style="color:#5a5a5a;margin-top:8px">We got your question — we&#39;ll get back to you soon.</p>
       </div>
-      <div class="rrow">
-        <label class="rlab" for="q_phone">Phone</label>
-        <input class="rin" id="q_phone" type="tel" name="phone" required placeholder="Best number to reach you">
-      </div>
-      <div class="rrow">
-        <label class="rlab" for="q_text">Question</label>
-        <textarea class="rta" id="q_text" name="question" required placeholder="What would you like to ask?"></textarea>
-      </div>
-      <div style="text-align:center;margin-top:26px">
-        <button type="submit" class="btn blue">Send Question</button>
-      </div>
-      <p id="qErr" style="display:none;color:#b23b3b;margin-top:16px;font-size:14px;text-align:center">Something went wrong — please try again.</p>
-    </form>
-
-    <div id="qThanks" style="display:none;max-width:520px;margin:32px auto 0;text-align:center">
-      <div class="serif" style="font-weight:600;font-size:32px;color:var(--blue-ink)">Thank you!</div>
-      <p style="color:#5a5a5a;margin-top:8px">We got your question — we&#39;ll text you back soon.</p>
     </div>
   </div>
 </section>
@@ -410,19 +406,23 @@ tick();setInterval(tick,1000);
   var form=document.getElementById('rsvpForm');
   if(!form) return;
   var acc=document.getElementById('acceptFields');
-  var thanks=document.getElementById('rsvpThanks');
-  var askLink=document.getElementById('askLink');
+  var intro=document.getElementById('rsvpIntro');
+  var done=document.getElementById('rsvpDone');
+  var qWrap=document.getElementById('questionWrap');
   function tog(){var v=form.querySelector('input[name=attending]:checked');var show=(v&&v.value==='Yes');acc.style.display=show?'block':'none';['f_party','f_guests'].forEach(function(id){var e=document.getElementById(id);if(e){if(show)e.setAttribute('required','required');else e.removeAttribute('required');}});}
   Array.prototype.forEach.call(form.querySelectorAll('input[name=attending]'),function(r){r.addEventListener('change',tog);});
-  function showThanks(){form.style.display='none';if(askLink)askLink.style.display='none';var intro=document.getElementById('rsvpIntro');if(intro)intro.style.display='none';thanks.style.display='block';}
-  try{if(localStorage.getItem('as_rsvped')==='1'){showThanks();}}catch(e){}
+  function stateDone(){if(intro)intro.style.display='none';form.style.display='none';done.style.display='block';}
+  function stateEdit(){done.style.display='none';qWrap.style.display='none';if(intro)intro.style.display='';form.style.display='';}
+  try{if(localStorage.getItem('as_rsvped')==='1'){stateDone();}}catch(e){}
+  document.getElementById('btnUpdate').addEventListener('click',function(){stateEdit();form.scrollIntoView({behavior:'smooth',block:'center'});});
+  document.getElementById('btnAsk').addEventListener('click',function(){qWrap.style.display='block';qWrap.scrollIntoView({behavior:'smooth',block:'center'});});
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var btn=form.querySelector('button[type=submit]'),err=document.getElementById('rsvpErr');
     err.style.display='none';btn.disabled=true;btn.textContent='Sending…';
     fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
       .then(function(res){
-        if(res.ok){try{localStorage.setItem('as_rsvped','1');}catch(e){}showThanks();thanks.scrollIntoView({behavior:'smooth',block:'center'});}
+        if(res.ok){try{localStorage.setItem('as_rsvped','1');}catch(e){}btn.disabled=false;btn.textContent='Send RSVP';stateDone();done.scrollIntoView({behavior:'smooth',block:'center'});}
         else{err.style.display='block';btn.disabled=false;btn.textContent='Send RSVP';}
       })
       .catch(function(){err.style.display='block';btn.disabled=false;btn.textContent='Send RSVP';});
