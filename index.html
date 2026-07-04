@@ -279,6 +279,10 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
     <h2 class="h2">Will you be there?</h2>
     <div class="rulec"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
     <p id="rsvpIntro"><strong>Please RSVP by October 31, 2026.</strong></p>
+    <div id="updateNote" style="display:none;max-width:560px;margin:0 auto">
+      <div class="serif" style="font-weight:600;font-size:24px;color:var(--blue-ink)">Update your RSVP</div>
+      <p style="color:#5a5a5a;margin-top:6px;font-size:14.5px">Please use the same email address so we can match it to your earlier response.</p>
+    </div>
 
     <form id="rsvpForm" class="rform" action="https://formspree.io/f/xojokqza" method="POST">
       <input type="hidden" name="_subject" value="New Engagement RSVP">
@@ -301,50 +305,62 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
       <div id="acceptFields" style="display:none">
         <div class="rrow">
           <label class="rlab" for="f_party">How many guests from your household will attend?</label>
-          <input class="rin" id="f_party" type="number" name="party_size" min="1" max="12" placeholder="e.g. 2">
-          <p style="font-size:12px;color:#8a7a55;margin:6px 0 0">Please RSVP only for the guests included in your household&#39;s invitation.</p>
+          <select class="rin" id="f_party" name="party_size">
+            <option value="" selected disabled>Select one</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option value="I have a guest-count question">I have a guest-count question</option>
+          </select>
+          <p style="font-size:12px;color:#8a7a55;margin:6px 0 0">Please RSVP only for the guests included with your household&#39;s invitation.</p>
         </div>
-        <div class="rrow">
+        <div class="rrow" id="gnRow">
           <label class="rlab" for="f_guests">Names of everyone attending</label>
           <input class="rin" id="f_guests" type="text" name="guest_names" placeholder="First &amp; last names of each guest attending">
           <p style="font-size:12px;color:#8a7a55;margin:6px 0 0">Please list each person attending so we can plan food and seating.</p>
         </div>
-        <div class="rrow">
+        <div class="rrow" id="dietRow">
           <label class="rlab" for="f_diet">Food allergies or dietary preferences <span class="opt">(optional)</span></label>
           <input class="rin" id="f_diet" type="text" name="dietary" placeholder="Vegetarian, nut allergy, etc.">
         </div>
+        <p id="gcNote" style="display:none;font-size:13.5px;color:#8a7a55;line-height:1.6;margin:2px 0 0">Because space is limited, larger or uncertain parties are confirmed individually. Please tell us who you&#39;re hoping to include below and we&#39;ll get back to you.</p>
       </div>
 
-      <div class="rtwo">
-        <div class="rrow">
-          <label class="rlab" for="f_email">Email</label>
-          <input class="rin" id="f_email" type="email" name="email" required placeholder="you@email.com">
+      <div id="rsvpRest">
+        <div class="rtwo">
+          <div class="rrow">
+            <label class="rlab" for="f_email">Email</label>
+            <input class="rin" id="f_email" type="email" name="email" required placeholder="you@email.com">
+          </div>
+          <div class="rrow">
+            <label class="rlab" for="f_phone">Phone</label>
+            <input class="rin" id="f_phone" type="tel" name="phone" required placeholder="Best number to reach you">
+          </div>
         </div>
+
         <div class="rrow">
-          <label class="rlab" for="f_phone">Phone</label>
-          <input class="rin" id="f_phone" type="tel" name="phone" required placeholder="Best number to reach you">
+          <label class="rlab" for="f_addr">Mailing address</label>
+          <input class="rin" id="f_addr" type="text" name="mailing_address" required placeholder="Street, city, state, ZIP">
         </div>
-      </div>
 
-      <div class="rrow">
-        <label class="rlab" for="f_addr">Mailing address</label>
-        <input class="rin" id="f_addr" type="text" name="mailing_address" required placeholder="Street, city, state, ZIP">
-      </div>
+        <div class="rrow">
+          <label class="rlab" for="f_note">A note or question <span class="opt">(optional)</span></label>
+          <textarea class="rta" id="f_note" name="note" placeholder="Anything you'd like us to know"></textarea>
+        </div>
 
-      <div class="rrow">
-        <label class="rlab" for="f_note">A note or question <span class="opt">(optional)</span></label>
-        <textarea class="rta" id="f_note" name="note" placeholder="Anything you'd like us to know"></textarea>
+        <div style="text-align:center;margin-top:26px">
+          <button type="submit" class="btn blue">Send RSVP</button>
+        </div>
+        <p id="rsvpErr" style="display:none;color:#b23b3b;margin-top:16px;font-size:14px;text-align:center">Something went wrong — please try again.</p>
       </div>
-
-      <div style="text-align:center;margin-top:26px">
-        <button type="submit" class="btn blue">Send RSVP</button>
-      </div>
-      <p id="rsvpErr" style="display:none;color:#b23b3b;margin-top:16px;font-size:14px;text-align:center">Something went wrong — please try again.</p>
     </form>
 
     <div id="rsvpDone" style="display:none;max-width:560px;margin:0 auto;text-align:center">
       <div class="serif" style="font-weight:600;font-size:32px;color:var(--blue-ink)">Thank you!</div>
-      <p style="color:#5a5a5a;margin-top:8px">We received your RSVP. Need to make a change? Submit the RSVP form again using the same email address.</p>
+      <p style="color:#5a5a5a;margin-top:8px">We received your RSVP. Need to make a change? Update your RSVP using the same email address.</p>
       <div class="doneBtns">
         <button type="button" id="btnUpdate" class="btn blue">Update RSVP</button>
         <button type="button" id="btnAsk" class="btn line">Ask a Question</button>
@@ -352,8 +368,8 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
     </div>
 
     <div id="questionWrap" style="display:none;margin-top:40px">
-      <h3 class="serif" style="font-weight:600;font-size:26px;color:var(--blue-ink);text-align:center">Have a question?</h3>
-      <p style="color:#5a5a5a;margin:6px 0 0;font-size:15px;text-align:center">Send us a note and we&#39;ll get back to you.</p>
+      <h3 id="qHeading" class="serif" style="font-weight:600;font-size:26px;color:var(--blue-ink);text-align:center">Have a question?</h3>
+      <p id="qSub" style="color:#5a5a5a;margin:6px 0 0;font-size:15px;text-align:center">Send us a note and we&#39;ll get back to you.</p>
       <form id="questionForm" class="rform" action="https://formspree.io/f/xojokqza" method="POST">
         <input type="hidden" name="_subject" value="New Question">
         <input type="hidden" name="submission_type" value="question">
@@ -377,7 +393,7 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
       </form>
       <div id="qThanks" style="display:none;text-align:center;margin-top:8px">
         <div class="serif" style="font-weight:600;font-size:26px;color:var(--blue-ink)">Thank you!</div>
-        <p style="color:#5a5a5a;margin-top:8px">We got your question — we&#39;ll get back to you soon.</p>
+        <p style="color:#5a5a5a;margin-top:8px">We got your note — we&#39;ll get back to you soon.</p>
       </div>
     </div>
   </div>
@@ -403,45 +419,61 @@ function tick(){
 tick();setInterval(tick,1000);
 
 (function(){
-  var form=document.getElementById('rsvpForm');
-  if(!form) return;
+  var form=document.getElementById('rsvpForm'); if(!form) return;
   var acc=document.getElementById('acceptFields');
   var intro=document.getElementById('rsvpIntro');
+  var upNote=document.getElementById('updateNote');
   var done=document.getElementById('rsvpDone');
   var qWrap=document.getElementById('questionWrap');
-  function tog(){var v=form.querySelector('input[name=attending]:checked');var show=(v&&v.value==='Yes');acc.style.display=show?'block':'none';['f_party','f_guests'].forEach(function(id){var e=document.getElementById(id);if(e){if(show)e.setAttribute('required','required');else e.removeAttribute('required');}});}
-  Array.prototype.forEach.call(form.querySelectorAll('input[name=attending]'),function(r){r.addEventListener('change',tog);});
-  function stateDone(){if(intro)intro.style.display='none';form.style.display='none';done.style.display='block';}
-  function stateEdit(){done.style.display='none';qWrap.style.display='none';if(intro)intro.style.display='';form.style.display='';}
-  try{if(localStorage.getItem('as_rsvped')==='1'){stateDone();}}catch(e){}
+  function setReq(id,on){var e=document.getElementById(id);if(e){if(on)e.setAttribute('required','required');else e.removeAttribute('required');}}
+  function openQ(mode){
+    var h=document.getElementById('qHeading'),sub=document.getElementById('qSub');
+    if(mode==='gc'){h.textContent='Guest-count question';sub.textContent="Please tell us who you're hoping to include, and we'll get back to you.";}
+    else{h.textContent='Have a question?';sub.textContent="Send us a note and we'll get back to you.";}
+    qWrap.style.display='block';
+  }
+  function applyState(){
+    var v=form.querySelector('input[name=attending]:checked');
+    var yes=(v&&v.value==='Yes');
+    acc.style.display=yes?'block':'none';
+    var pe=document.getElementById('f_party');
+    var isQ=yes&&!!pe&&pe.value==='I have a guest-count question';
+    var numSel=yes&&!!pe&&!!pe.value&&!isQ;
+    document.getElementById('gnRow').style.display=numSel?'block':'none';
+    document.getElementById('dietRow').style.display=numSel?'block':'none';
+    document.getElementById('gcNote').style.display=isQ?'block':'none';
+    document.getElementById('rsvpRest').style.display=isQ?'none':'block';
+    setReq('f_name',!isQ);setReq('f_email',!isQ);setReq('f_phone',!isQ);setReq('f_addr',!isQ);
+    setReq('f_party',yes&&!isQ);setReq('f_guests',numSel);
+    if(isQ){openQ('gc');}
+  }
+  function stateFresh(){intro.style.display='';upNote.style.display='none';done.style.display='none';qWrap.style.display='none';form.style.display='';}
+  function stateDone(){intro.style.display='none';upNote.style.display='none';form.style.display='none';qWrap.style.display='none';done.style.display='block';}
+  function stateEdit(){intro.style.display='none';done.style.display='none';qWrap.style.display='none';upNote.style.display='block';form.style.display='';applyState();}
+  Array.prototype.forEach.call(form.querySelectorAll('input[name=attending]'),function(r){r.addEventListener('change',applyState);});
+  var pe0=document.getElementById('f_party'); if(pe0)pe0.addEventListener('change',applyState);
   document.getElementById('btnUpdate').addEventListener('click',function(){stateEdit();form.scrollIntoView({behavior:'smooth',block:'center'});});
-  document.getElementById('btnAsk').addEventListener('click',function(){qWrap.style.display='block';qWrap.scrollIntoView({behavior:'smooth',block:'center'});});
+  document.getElementById('btnAsk').addEventListener('click',function(){openQ('ask');qWrap.scrollIntoView({behavior:'smooth',block:'center'});});
+  try{if(localStorage.getItem('as_rsvped')==='1'){stateDone();}else{stateFresh();}}catch(e){stateFresh();}
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var btn=form.querySelector('button[type=submit]'),err=document.getElementById('rsvpErr');
     err.style.display='none';btn.disabled=true;btn.textContent='Sending…';
     fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
-      .then(function(res){
-        if(res.ok){try{localStorage.setItem('as_rsvped','1');}catch(e){}btn.disabled=false;btn.textContent='Send RSVP';stateDone();done.scrollIntoView({behavior:'smooth',block:'center'});}
-        else{err.style.display='block';btn.disabled=false;btn.textContent='Send RSVP';}
-      })
+      .then(function(res){if(res.ok){try{localStorage.setItem('as_rsvped','1');}catch(e){}btn.disabled=false;btn.textContent='Send RSVP';stateDone();done.scrollIntoView({behavior:'smooth',block:'center'});}else{err.style.display='block';btn.disabled=false;btn.textContent='Send RSVP';}})
       .catch(function(){err.style.display='block';btn.disabled=false;btn.textContent='Send RSVP';});
   });
 })();
 
 (function(){
-  var form=document.getElementById('questionForm');
-  if(!form) return;
+  var form=document.getElementById('questionForm'); if(!form) return;
   var thanks=document.getElementById('qThanks');
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var btn=form.querySelector('button[type=submit]'),err=document.getElementById('qErr');
     err.style.display='none';btn.disabled=true;btn.textContent='Sending…';
     fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
-      .then(function(res){
-        if(res.ok){form.style.display='none';thanks.style.display='block';thanks.scrollIntoView({behavior:'smooth',block:'center'});}
-        else{err.style.display='block';btn.disabled=false;btn.textContent='Send Question';}
-      })
+      .then(function(res){if(res.ok){form.style.display='none';thanks.style.display='block';thanks.scrollIntoView({behavior:'smooth',block:'center'});}else{err.style.display='block';btn.disabled=false;btn.textContent='Send Question';}})
       .catch(function(){err.style.display='block';btn.disabled=false;btn.textContent='Send Question';});
   });
 })();
