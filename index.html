@@ -113,6 +113,8 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
 /* RSVP (ivory) */
 .rsvpsec{background:#fff;text-align:center}
 .rsvpsec p{color:#5a5a5a;margin-top:10px;font-size:15.5px}
+.qsec{background:var(--ivory);text-align:center}
+.qsec p{color:#5a5a5a;margin-top:10px;font-size:15.5px}
 .rform{max-width:560px;margin:38px auto 0;text-align:left}
 .rrow{margin-bottom:18px}
 .rlab{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-ink);margin-bottom:8px;font-weight:500}
@@ -121,7 +123,7 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
 .rin:focus,.rta:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(63,120,191,.15)}
 .rta{min-height:92px;resize:vertical}
 .rtwo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.attend{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.attend{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .attend label{display:flex;align-items:center;justify-content:center;padding:14px;border:1px solid #ddd3bf;border-radius:5px;cursor:pointer;font-size:14.5px;color:var(--blue-ink);background:#fff;transition:.15s}
 .attend label:hover{border-color:var(--gold)}
 .attend label:has(input:checked){background:var(--blue);color:#fff;border-color:var(--blue)}
@@ -275,10 +277,11 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
     <div class="eyebrow">Join Us</div>
     <h2 class="h2">Will you be there?</h2>
     <div class="rulec"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
-    <p><strong>Please RSVP by October 31, 2026.</strong><br>Questions? Text us anytime. Our number is on your invitation.</p>
+    <p><strong>Please RSVP by October 31, 2026.</strong><br>Not sure yet? That&#39;s okay — let us know and we&#39;ll follow up closer to the date.</p>
 
     <form id="rsvpForm" class="rform" action="https://formspree.io/f/xojokqza" method="POST">
       <input type="hidden" name="_subject" value="New Engagement RSVP">
+      <input type="hidden" name="form_type" value="rsvp">
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
       <div class="rrow">
@@ -291,6 +294,7 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
         <div class="attend">
           <label><input type="radio" name="attending" value="Yes" required>Yes</label>
           <label><input type="radio" name="attending" value="No">No</label>
+          <label><input type="radio" name="attending" value="Not sure yet">Not sure yet</label>
         </div>
       </div>
 
@@ -302,7 +306,7 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
         </div>
         <div class="rrow">
           <label class="rlab" for="f_guests">Names of everyone attending</label>
-          <input class="rin" id="f_guests" type="text" name="guest_names" placeholder="First &amp; last names of your whole party">
+          <input class="rin" id="f_guests" type="text" name="guest_names" placeholder="First &amp; last names of each guest attending">
           <p style="font-size:12px;color:#8a7a55;margin:6px 0 0">Please list each person attending so we can plan food and seating.</p>
         </div>
         <div class="rrow">
@@ -328,19 +332,63 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
       </div>
 
       <div class="rrow">
-        <label class="rlab" for="f_note">A note or question <span class="opt">(optional)</span></label>
+        <label class="rlab" for="f_from">Traveling from <span class="opt">(optional)</span></label>
+        <input class="rin" id="f_from" type="text" name="traveling_from" placeholder="City, State">
+      </div>
+
+      <div class="rrow">
+        <label class="rlab" for="f_note">A note <span class="opt">(optional)</span></label>
         <textarea class="rta" id="f_note" name="note" placeholder="Anything you'd like us to know"></textarea>
       </div>
 
       <div style="text-align:center;margin-top:26px">
         <button type="submit" class="btn blue">Send RSVP</button>
       </div>
-      <p id="rsvpErr" style="display:none;color:#b23b3b;margin-top:16px;font-size:14px;text-align:center">Something went wrong — please try again, or just text us.</p>
+      <p id="rsvpErr" style="display:none;color:#b23b3b;margin-top:16px;font-size:14px;text-align:center">Something went wrong — please try again.</p>
     </form>
 
-    <div id="rsvpThanks" style="display:none;max-width:520px;margin:32px auto 0">
-      <div style="font-family:'Cormorant Garamond';font-weight:600;font-size:32px;color:var(--blue-ink)">Thank you!</div>
-      <p id="thanksMsg" style="color:#5a5a5a;margin-top:8px">Your RSVP is in — we can't wait to celebrate with you.</p>
+    <p id="askLink" style="text-align:center;margin-top:22px;font-size:13.5px;color:#5a5a5a">Already RSVP&#39;d and have a question? <a href="#question" style="color:var(--blue);border-bottom:1px solid var(--gold);text-decoration:none">Send us a note below.</a></p>
+
+    <div id="rsvpThanks" style="display:none;max-width:520px;margin:32px auto 0;text-align:center">
+      <div class="serif" style="font-weight:600;font-size:32px;color:var(--blue-ink)">Thank you!</div>
+      <p style="color:#5a5a5a;margin-top:8px">We received your RSVP. Need to update it? Just submit the form again using the same email.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUESTION -->
+<section class="qsec" id="question">
+  <div class="wrap">
+    <div class="eyebrow">Questions</div>
+    <h2 class="h2">Have a question?</h2>
+    <div class="rulec"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
+    <p>Send us a note and we&#39;ll text you back.</p>
+
+    <form id="questionForm" class="rform" action="https://formspree.io/f/xojokqza" method="POST">
+      <input type="hidden" name="_subject" value="New Question">
+      <input type="hidden" name="form_type" value="question">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+      <div class="rrow">
+        <label class="rlab" for="q_name">Your name</label>
+        <input class="rin" id="q_name" type="text" name="name" required placeholder="First &amp; last name">
+      </div>
+      <div class="rrow">
+        <label class="rlab" for="q_phone">Phone</label>
+        <input class="rin" id="q_phone" type="tel" name="phone" required placeholder="Best number to reach you">
+      </div>
+      <div class="rrow">
+        <label class="rlab" for="q_text">Question</label>
+        <textarea class="rta" id="q_text" name="question" required placeholder="What would you like to ask?"></textarea>
+      </div>
+      <div style="text-align:center;margin-top:26px">
+        <button type="submit" class="btn blue">Send Question</button>
+      </div>
+      <p id="qErr" style="display:none;color:#b23b3b;margin-top:16px;font-size:14px;text-align:center">Something went wrong — please try again.</p>
+    </form>
+
+    <div id="qThanks" style="display:none;max-width:520px;margin:32px auto 0;text-align:center">
+      <div class="serif" style="font-weight:600;font-size:32px;color:var(--blue-ink)">Thank you!</div>
+      <p style="color:#5a5a5a;margin-top:8px">We got your question — we&#39;ll text you back soon.</p>
     </div>
   </div>
 </section>
@@ -364,23 +412,43 @@ function tick(){
 }
 tick();setInterval(tick,1000);
 
-// RSVP form: conditional fields + AJAX submit
 (function(){
   var form=document.getElementById('rsvpForm');
   if(!form) return;
   var acc=document.getElementById('acceptFields');
+  var thanks=document.getElementById('rsvpThanks');
+  var askLink=document.getElementById('askLink');
   function tog(){var v=form.querySelector('input[name=attending]:checked');var show=(v&&v.value==='Yes');acc.style.display=show?'block':'none';['f_party','f_guests'].forEach(function(id){var e=document.getElementById(id);if(e){if(show)e.setAttribute('required','required');else e.removeAttribute('required');}});}
   Array.prototype.forEach.call(form.querySelectorAll('input[name=attending]'),function(r){r.addEventListener('change',tog);});
+  function showThanks(){form.style.display='none';if(askLink)askLink.style.display='none';thanks.style.display='block';}
+  try{if(localStorage.getItem('as_rsvped')==='1'){showThanks();}}catch(e){}
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var btn=form.querySelector('button[type=submit]'),err=document.getElementById('rsvpErr');
     err.style.display='none';btn.disabled=true;btn.textContent='Sending…';
     fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
       .then(function(res){
-        if(res.ok){var _no=(form.querySelector('input[name=attending]:checked')||{}).value==='No';var _m=document.getElementById('thanksMsg');if(_m)_m.textContent=_no?"Thank you for letting us know. You'll be missed!":"Your RSVP is in, we can't wait to celebrate with you.";form.style.display='none';var t=document.getElementById('rsvpThanks');t.style.display='block';t.scrollIntoView({behavior:'smooth',block:'center'});}
+        if(res.ok){try{localStorage.setItem('as_rsvped','1');}catch(e){}showThanks();thanks.scrollIntoView({behavior:'smooth',block:'center'});}
         else{err.style.display='block';btn.disabled=false;btn.textContent='Send RSVP';}
       })
       .catch(function(){err.style.display='block';btn.disabled=false;btn.textContent='Send RSVP';});
+  });
+})();
+
+(function(){
+  var form=document.getElementById('questionForm');
+  if(!form) return;
+  var thanks=document.getElementById('qThanks');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var btn=form.querySelector('button[type=submit]'),err=document.getElementById('qErr');
+    err.style.display='none';btn.disabled=true;btn.textContent='Sending…';
+    fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+      .then(function(res){
+        if(res.ok){form.style.display='none';thanks.style.display='block';thanks.scrollIntoView({behavior:'smooth',block:'center'});}
+        else{err.style.display='block';btn.disabled=false;btn.textContent='Send Question';}
+      })
+      .catch(function(){err.style.display='block';btn.disabled=false;btn.textContent='Send Question';});
   });
 })();
 </script>
