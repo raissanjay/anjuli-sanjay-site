@@ -123,7 +123,7 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
 .rin:focus,.rta:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(63,120,191,.15)}
 .rta{min-height:92px;resize:vertical}
 .rtwo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.attend{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.attend{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .attend label{display:flex;align-items:center;justify-content:center;padding:14px;border:1px solid #ddd3bf;border-radius:5px;cursor:pointer;font-size:14.5px;color:var(--blue-ink);background:#fff;transition:.15s}
 .attend label:hover{border-color:var(--gold)}
 .attend label:has(input:checked){background:var(--blue);color:#fff;border-color:var(--blue)}
@@ -277,7 +277,7 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
     <div class="eyebrow">Join Us</div>
     <h2 class="h2">Will you be there?</h2>
     <div class="rulec"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
-    <p><strong>Please RSVP by October 31, 2026.</strong><br>Not sure yet? That&#39;s okay — let us know and we&#39;ll follow up closer to the date.</p>
+    <p id="rsvpIntro"><strong>Please RSVP by October 31, 2026.</strong></p>
 
     <form id="rsvpForm" class="rform" action="https://formspree.io/f/xojokqza" method="POST">
       <input type="hidden" name="_subject" value="New Engagement RSVP">
@@ -294,7 +294,6 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
         <div class="attend">
           <label><input type="radio" name="attending" value="Yes" required>Yes</label>
           <label><input type="radio" name="attending" value="No">No</label>
-          <label><input type="radio" name="attending" value="Not sure yet">Not sure yet</label>
         </div>
       </div>
 
@@ -329,11 +328,6 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
       <div class="rrow">
         <label class="rlab" for="f_addr">Mailing address</label>
         <input class="rin" id="f_addr" type="text" name="mailing_address" required placeholder="Street, city, state, ZIP">
-      </div>
-
-      <div class="rrow">
-        <label class="rlab" for="f_from">Traveling from <span class="opt">(optional)</span></label>
-        <input class="rin" id="f_from" type="text" name="traveling_from" placeholder="City, State">
       </div>
 
       <div class="rrow">
@@ -420,7 +414,7 @@ tick();setInterval(tick,1000);
   var askLink=document.getElementById('askLink');
   function tog(){var v=form.querySelector('input[name=attending]:checked');var show=(v&&v.value==='Yes');acc.style.display=show?'block':'none';['f_party','f_guests'].forEach(function(id){var e=document.getElementById(id);if(e){if(show)e.setAttribute('required','required');else e.removeAttribute('required');}});}
   Array.prototype.forEach.call(form.querySelectorAll('input[name=attending]'),function(r){r.addEventListener('change',tog);});
-  function showThanks(){form.style.display='none';if(askLink)askLink.style.display='none';thanks.style.display='block';}
+  function showThanks(){form.style.display='none';if(askLink)askLink.style.display='none';var intro=document.getElementById('rsvpIntro');if(intro)intro.style.display='none';thanks.style.display='block';}
   try{if(localStorage.getItem('as_rsvped')==='1'){showThanks();}}catch(e){}
   form.addEventListener('submit',function(e){
     e.preventDefault();
