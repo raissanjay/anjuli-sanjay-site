@@ -130,6 +130,9 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
 .attend label:has(input:checked){background:var(--blue);color:#fff;border-color:var(--blue)}
 .attend input{position:absolute;opacity:0;width:0;height:0}
 .rform button.btn{border:none;cursor:pointer}
+.gf{margin-bottom:12px}
+.gf label{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8a7a55;margin-bottom:5px}
+.gf label .you{color:var(--gold-deep);text-transform:none;letter-spacing:0;font-style:italic}
 @media(max-width:600px){.rtwo,.attend{grid-template-columns:1fr}}
 
 /* BEFORE YOU ARRIVE */
@@ -304,27 +307,29 @@ section{padding:clamp(58px,8vw,92px) clamp(22px,6vw,64px)}
 
       <div id="acceptFields" style="display:none">
         <div class="rrow">
-          <label class="rlab" for="f_party">How many guests from your household will attend?</label>
+          <label class="rlab" for="f_party">How many guests will attend in total, including you?</label>
           <select class="rin" id="f_party" name="party_size">
             <option value="" selected disabled>Select one</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
+            <option value="1">Just me (1 guest)</option>
+            <option value="2">2 guests</option>
+            <option value="3">3 guests</option>
+            <option value="4">4 guests</option>
+            <option value="5">5 guests</option>
+            <option value="6">6 guests</option>
             <option value="I have a guest-count question">I have a guest-count question</option>
           </select>
-          <p style="font-size:12px;color:#8a7a55;margin:6px 0 0">Please RSVP only for the guests included with your household&#39;s invitation.</p>
+          <p style="font-size:12px;color:#8a7a55;margin:6px 0 0">Count yourself plus everyone included on your household&#39;s invitation who will attend.</p>
         </div>
         <p id="gcNote" style="display:none;font-size:13.5px;color:#8a7a55;line-height:1.6;margin:2px 0 0">Because space is limited, larger or uncertain parties are confirmed individually. Please tell us who you&#39;re hoping to include below and we&#39;ll get back to you.</p>
       </div>
 
       <div class="rrow" id="namesRow" style="display:none">
-        <label class="rlab" for="f_guests" id="namesLabel">Names of everyone attending</label>
-        <input class="rin" id="f_guests" type="text" name="guest_names" placeholder="First &amp; last names">
+        <label class="rlab" id="namesLabel">Who&#39;s attending?</label>
+        <div id="guestFields"></div>
+        <input class="rin" id="f_guests" type="text" placeholder="e.g. Jane Doe, John Doe" style="display:none">
         <p id="namesHelp" style="font-size:12px;color:#8a7a55;margin:6px 0 0">Please list each person attending so we can plan food and seating.</p>
       </div>
+      <input type="hidden" name="guest_names" id="guestNamesHidden">
 
       <div class="rrow" id="dietRow" style="display:none">
         <label class="rlab" for="f_diet">Food allergies or dietary preferences <span class="opt">(optional)</span></label>
@@ -437,23 +442,51 @@ tick();setInterval(tick,1000);
     else{h.textContent='Have a question?';sub.textContent="Send us a note and we'll get back to you.";}
     qWrap.style.display='block';
   }
+  var guestFields=document.getElementById('guestFields');
+  var fGuests=document.getElementById('f_guests');
+  function buildGuestFields(n){
+    var prev=[];
+    Array.prototype.forEach.call(guestFields.querySelectorAll('input'),function(i){prev.push(i.value);});
+    if(guestFields.querySelectorAll('input').length===n){return;} // count unchanged, keep values
+    guestFields.innerHTML='';
+    for(var i=0;i<n;i++){
+      var row=document.createElement('div');row.className='gf';
+      var lab=document.createElement('label');lab.textContent='Guest '+(i+1);
+      if(i===0){var you=document.createElement('span');you.className='you';you.textContent=' — that’s you';lab.appendChild(you);}
+      var inp=document.createElement('input');
+      inp.className='rin';inp.type='text';inp.placeholder='First & last name';
+      if(prev[i])inp.value=prev[i];
+      if(i===0)inp.setAttribute('required','required');
+      row.appendChild(lab);row.appendChild(inp);guestFields.appendChild(row);
+    }
+  }
   function applyState(){
     var v=form.querySelector('input[name=attending]:checked');
     var yes=(v&&v.value==='Yes'); var no=(v&&v.value==='No');
     acc.style.display=yes?'block':'none';
     var pe=document.getElementById('f_party');
     var isQ=yes&&!!pe&&pe.value==='I have a guest-count question';
-    var numSel=yes&&!!pe&&!!pe.value&&!isQ;
+    var num=(yes&&!!pe&&!!pe.value&&!isQ)?parseInt(pe.value,10):0;
+    var numSel=num>0;
     var showNames=(numSel||no);
     document.getElementById('namesRow').style.display=showNames?'block':'none';
     document.getElementById('dietRow').style.display=numSel?'block':'none';
     document.getElementById('gcNote').style.display=isQ?'block':'none';
     document.getElementById('rsvpRest').style.display=isQ?'none':'block';
     var nl=document.getElementById('namesLabel'), nh=document.getElementById('namesHelp');
-    if(no){nl.textContent='Names of everyone in your household';nh.textContent='Please list everyone in your household so we can send your wedding invitation.';}
-    else{nl.textContent='Names of everyone attending';nh.textContent='Please list each person attending so we can plan food and seating.';}
+    if(numSel){
+      guestFields.style.display='block';fGuests.style.display='none';fGuests.removeAttribute('required');
+      buildGuestFields(num);
+      nl.textContent='Who’s attending?';
+      nh.textContent=num>1?'Add a first and last name for each guest, including yourself.':'Add your first and last name.';
+    } else {
+      guestFields.style.display='none';guestFields.innerHTML='';
+      fGuests.style.display=no?'block':'none';
+      if(no){nl.textContent='Names of everyone in your household';nh.textContent='List everyone in your household, separated by commas, so we can send your wedding invitation.';}
+      setReq('f_guests',no);
+    }
     setReq('f_name',!isQ);setReq('f_email',!isQ);setReq('f_phone',!isQ);setReq('f_addr',!isQ);
-    setReq('f_party',yes&&!isQ);setReq('f_guests',showNames);
+    setReq('f_party',yes&&!isQ);
     if(isQ){openQ('gc');}
   }
   function stateFresh(){intro.style.display='';upNote.style.display='none';done.style.display='none';qWrap.style.display='none';form.style.display='';askLink.style.display='block';}
@@ -467,6 +500,14 @@ tick();setInterval(tick,1000);
   try{if(localStorage.getItem('as_rsvped')==='1'){stateDone();}else{stateFresh();}}catch(e){stateFresh();}
   form.addEventListener('submit',function(e){
     e.preventDefault();
+    var hid=document.getElementById('guestNamesHidden');
+    if(guestFields.style.display!=='none'&&guestFields.querySelectorAll('input').length){
+      var names=[];
+      Array.prototype.forEach.call(guestFields.querySelectorAll('input'),function(i){if(i.value.trim())names.push(i.value.trim());});
+      hid.value=names.join(', ');
+    } else if(fGuests.style.display!=='none'){
+      hid.value=fGuests.value.trim();
+    } else { hid.value=''; }
     var btn=form.querySelector('button[type=submit]'),err=document.getElementById('rsvpErr');
     err.style.display='none';btn.disabled=true;btn.textContent='Sending…';
     fetch(form.action,{method:'POST',body:new FormData(form),mode:'no-cors'})
